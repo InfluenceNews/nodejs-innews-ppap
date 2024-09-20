@@ -1,0 +1,42 @@
+name: Run
+
+on:
+  schedule:
+    - cron: 0/5 * * * *
+
+  push:
+    branches:
+      - main
+
+jobs:
+  run:
+    name: Running
+    timeout-minutes: 4
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - cmd: step1
+          - cmd: step2
+          - cmd: step3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: InfluenceNews/nodejs-innews-crawler
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Env setup
+        run: mv .github/env/.env.dev
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Run!!!
+        run: npm run ${{ matrix.cmd }}
