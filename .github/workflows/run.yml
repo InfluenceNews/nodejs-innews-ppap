@@ -3,7 +3,7 @@ name: Run
 on:
   # schedule:
   #   - cron: 0/5 * * * *
-  
+
   repository_dispatch:
     types:
       - ppap
@@ -39,8 +39,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          token: ${{ secrets.GH_PAT }}
           cache: "npm"
-          cache-dependency-path: package-lock.json
+      - run: npm install
 
       - name: Run!!!
         run: npm run ${{ matrix.cmd }}
