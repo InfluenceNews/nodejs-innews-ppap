@@ -1,0 +1,50 @@
+name: Run
+
+on:
+  repository_dispatch:
+    types:
+      - ppap
+
+  push:
+    branches:
+      - main
+
+jobs:
+  run:
+    name: Running
+    timeout-minutes: 4
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: InfluenceNews/nodejs-innews-crawler
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          repository: InfluenceNews/secrets-file
+          path: secrets-file
+          ref: main
+
+      - name: Env setup
+        run: mv ../secrets-file/nodejs-innews-crawler/.env.prd .env
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          token: ${{ secrets.GH_PAT }}
+          cache: "npm"
+      - run: npm install
+
+      - name: Run Step 1 !!!
+        run: npm run step1
+
+      - name: Run Step 2 !!!
+        run: npm run step2
+
+      - name: Run Step 3 !!!
+        run: npm run step3
