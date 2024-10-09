@@ -1,4 +1,4 @@
-name: Run
+name: Run production
 
 on:
   repository_dispatch:
