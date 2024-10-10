@@ -3,7 +3,7 @@ name: Run production
 on:
   repository_dispatch:
     types:
-      - ppap
+      - ppap-prd
 
   push:
     branches:

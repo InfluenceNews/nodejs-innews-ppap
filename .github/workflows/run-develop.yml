@@ -6,7 +6,7 @@ on:
 
   repository_dispatch:
     types:
-      - ppap
+      - ppap-dev
 
   push:
     branches:
