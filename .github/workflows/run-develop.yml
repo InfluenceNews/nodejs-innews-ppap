@@ -17,14 +17,14 @@ jobs:
     name: Running
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    continue-on-error: true
-    strategy:
-      fail-fast: true
-      matrix:
-        include:
-          - cmd: step1
-          - cmd: step2
-          - cmd: step3
+    # continue-on-error: true
+    # strategy:
+    #   fail-fast: true
+    #   matrix:
+    #     include:
+    #       - cmd: step1
+    #       - cmd: step2
+    #       - cmd: step3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -43,14 +43,14 @@ jobs:
           cache: "npm"
       - run: npm install
 
-      - name: Run!!!
-        run: npm run ${{ matrix.cmd }}
+      # - name: Run!!!
+      #   run: npm run ${{ matrix.cmd }}
 
-      # - name: Run Step 1 !!!
-      #   run: npm run step1
+      - name: Run Step 1 !!!
+        run: npm run step1
 
-      # - name: Run Step 2 !!!
-      #   run: npm run step2
+      - name: Run Step 2 !!!
+        run: npm run step2
 
-      # - name: Run Step 3 !!!
-      #   run: npm run step3
+      - name: Run Step 3 !!!
+        run: npm run step3
