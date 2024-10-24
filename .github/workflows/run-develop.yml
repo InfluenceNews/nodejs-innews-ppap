@@ -18,7 +18,7 @@ env:
 jobs:
   run:
     name: Running
-    timeout-minutes: 60
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     continue-on-error: true
     strategy:
