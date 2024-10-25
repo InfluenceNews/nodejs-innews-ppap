@@ -1,9 +1,6 @@
 name: Run development
 
 on:
-  # schedule:
-  #   - cron: 0/5 * * * *
-
   repository_dispatch:
     types:
       - ppap-dev
