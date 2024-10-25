@@ -38,7 +38,7 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           cache: "npm"
       - run: npm install
-      - run: mv .github/libs/@distube node_modules/
+      - run: rm -rf node_modules/@distube && mv .github/libs/@distube node_modules/
 
       - name: Run!!!
         run: npm run ${{ matrix.cmd }}
