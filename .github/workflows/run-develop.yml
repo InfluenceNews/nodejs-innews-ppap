@@ -8,10 +8,6 @@ on:
     types:
       - ppap-dev
 
-  push:
-    branches:
-      - main
-
 env:
   LANGUAGE_CODE: ${{ github.event.client_payload.language_code }}
 
