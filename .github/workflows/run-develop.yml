@@ -35,9 +35,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          #token: ${{ secrets.GH_PAT }}
+          token: ${{ secrets.GH_PAT }}
           cache: "npm"
-      - run: rm -rf package-lock.json && npm install
+      - run: npm install
 
       - name: Run!!!
         run: npm run ${{ matrix.cmd }}
