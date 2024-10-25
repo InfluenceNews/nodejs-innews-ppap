@@ -37,7 +37,7 @@ jobs:
           node-version: 20
           #token: ${{ secrets.GH_PAT }}
           cache: "npm"
-      - run: npm install
+      - run: rm -rf package-lock.json && npm install
 
       - name: Run!!!
         run: npm run ${{ matrix.cmd }}
