@@ -43,7 +43,16 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           cache: "npm"
       - run: npm install
-      - run: rm -rf node_modules/@distube && mv .github/libs/@distube node_modules/
+
+      - name: Remove node_modules/@distube
+        run: |
+          rm -rf node_modules/@distube
+          echo "Removed existing @distube directory from node_modules."
+    
+      - name: Move @distube to node_modules
+        run: |
+          mv .github/libs/@distube node_modules/
+          echo "Moved @distube to node_modules."
 
       - name: Delay before Run!!!
         run: sleep 3
