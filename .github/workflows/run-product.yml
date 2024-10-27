@@ -43,10 +43,11 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           cache: "npm"
       - run: npm install
-      - run: rsync -a .github/libs/@distube node_modules
+      - run: rm -rf node_modules/@distube && mv .github/libs/@distube node_modules/
 
       - name: Delay before Run!!!
         run: sleep 3
+        
       - name: Run!!!
         run: npm run ${{ matrix.cmd }}
 
