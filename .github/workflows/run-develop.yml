@@ -21,6 +21,7 @@ jobs:
           - cmd: step1
           - cmd: step2
           - cmd: step3
+          - cmd: video
     steps:
       - name: Checkout
         uses: actions/checkout@v4
