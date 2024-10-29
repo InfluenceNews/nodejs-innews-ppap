@@ -9,7 +9,7 @@ jobs:
   run:
     name: Running
     timeout-minutes: 5
-    runs-on: macos-14
+    runs-on: ubuntu-latest
     continue-on-error: true
     strategy:
       fail-fast: true
