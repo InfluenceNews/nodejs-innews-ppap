@@ -11,4 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, world!"
-      - run: python3 --version
+      - run: pip install -r requirements.txt
+      - run: python3 main.py
