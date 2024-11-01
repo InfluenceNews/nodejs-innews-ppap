@@ -7,21 +7,13 @@ on:
 
 env:
   LANGUAGE_CODE: ${{ github.event.client_payload.language_code }}
+  SCRIPT_NAME: ${{ github.event.client_payload.script_name }}
 
 jobs:
   run:
     name: Running
-    timeout-minutes: 30
+    timeout-minutes: 5
     runs-on: ubuntu-latest
-    continue-on-error: true
-    strategy:
-      fail-fast: true
-      matrix:
-        include:
-          - cmd: step1
-          - cmd: step2
-          - cmd: step3
-          - cmd: video
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,13 +33,4 @@ jobs:
       - run: npm install
 
       - name: Run!!!
-        run: npm run ${{ matrix.cmd }}
-
-      # - name: Run Step 1 !!!
-      #   run: npm run step1
-
-      # - name: Run Step 2 !!!
-      #   run: npm run step2
-
-      # - name: Run Step 3 !!!
-      #   run: npm run step3
+        run: npm run ${{ env.SCRIPT_NAME }}
