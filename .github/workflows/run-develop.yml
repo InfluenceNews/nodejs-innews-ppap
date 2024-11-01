@@ -30,7 +30,17 @@ jobs:
           node-version: 20
           token: ${{ secrets.GH_PAT }}
           cache: "npm"
-      - run: npm install
+
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: cache-node-modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Run npm install
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm install
 
       - name: Run!!!
         run: npm run ${{ env.SCRIPT_NAME }}
