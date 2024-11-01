@@ -12,7 +12,7 @@ env:
 jobs:
   run:
     name: Running
-    timeout-minutes: 5
+    timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Crawler
