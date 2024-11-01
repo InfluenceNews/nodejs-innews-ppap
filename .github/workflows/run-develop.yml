@@ -3,7 +3,7 @@ name: Run development
 on:
   repository_dispatch:
     types:
-      - ppap-dev
+      - ppap-dev-*
 
 env:
   LANGUAGE_CODE: ${{ github.event.client_payload.language_code }}
