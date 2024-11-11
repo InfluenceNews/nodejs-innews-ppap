@@ -13,7 +13,7 @@ env:
 jobs:
   run:
     name: Running
-    timeout-minutes: ${{ env.TIMEOUT }}
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Crawler
